@@ -228,5 +228,19 @@ class ComicsTableSeeder extends Seeder
                 ],
             ],
         ];
-    }
+
+            foreach($comics as $comicData) {
+
+                $comic = Comic :: create([
+                    "title" => $comicData["title"],
+                    "description" => $comicData["description"],
+                    "thumb" => $comicData["thumb"],
+                    "price" => $comicData["price"],
+                    "series" => $comicData["series"],
+                    "sale_date" => $comicData["sale_date"],
+                    "type" => $comicData["type"]
+                ]);
+            }
+        }
+
 }
