@@ -42,4 +42,10 @@ class MainController extends Controller
 
         return redirect()-> route("comic.index");
     }
+
+    public function destroy($id){
+        $comic = Comic :: FindOrFail($id);
+        $comic -> delete();
+        return redirect()-> route("comic.index");
+    }
 }
