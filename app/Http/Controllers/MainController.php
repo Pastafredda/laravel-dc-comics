@@ -24,17 +24,22 @@ class MainController extends Controller
 
     public function store(Request $request){
         $data = $request -> all();
-        $comic = Comic :: create([
-            "title" => $data["title"],
-            "description" => $data["description"],
-            "thumb" => $data["thumb"],
-            "price" => $data["price"],
-            "series" => $data["series"],
-            "sale_date" => $data["sale_date"],
-            "type" => $data["type"]
-        ]);
+        $comic = Comic :: create($data);
 
         return redirect()-> route("comic.index");
 
+    }
+
+    public function edit($id){
+        $comic = Comic :: FindOrFail($id);
+        return view('comic.edit', compact('comic'));
+    }
+
+    public function update(Request $request, $id){
+        $data = $request -> all();
+        $comic = Comic :: FindOrFail($id);
+        $comic -> update($data);
+
+        return redirect()-> route("comic.index");
     }
 }

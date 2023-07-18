@@ -8,7 +8,8 @@
 
     <ul class="list-unstyled">
         @foreach ($comics as $comic)
-            <li> <a href="{{ route('comic.show', $comic->id) }}">{{ $comic->title }}</a></li>
+            <li class="my-3"> <a href="{{ route('comic.show', $comic->id) }}">{{ $comic->title }}</a></li>
+            <a class="bg-dark p-1 rounded" href="{{ route('comic.edit', $comic->id) }}">EDIT</a>
         @endforeach
     </ul>
 @endsection
