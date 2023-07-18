@@ -1,5 +1,14 @@
 @extends('layout.main-layout')
 
 @section('content')
-    <h1>Hello from index</h1>
+    <div class="my-3">
+        <h1>comics</h1>
+        <a class="bg-dark text-light p-1 rounded" href="{{ route('comic.create') }}">Nuovo</a>
+    </div>
+
+    <ul class="list-unstyled">
+        @foreach ($comics as $comic)
+            <li> <a href="{{ route('comic.show', $comic->id) }}">{{ $comic->title }}</a></li>
+        @endforeach
+    </ul>
 @endsection
